@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Routes } from 'react-router-dom';
-import { init, getRoutes, Navbar, PluginManager } from 'composaic';
+import { init, getRoutes, Navbar, PluginManager } from '@composaic/core';
 import { config } from '../config';
 import ErrorBoundary from './ErrorBoundary';
 import { loadRemoteModule } from './RemoteModuleLoader';

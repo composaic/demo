@@ -1,10 +1,10 @@
 {
-    "name": "composaic-demo",
-    "version": "0.1.1",
+    "name": "@composaic/demo",
+    "version": "0.2.0",
     "description": "Example projects for Composaic",
     "repository": {
         "type": "git",
-        "url": "https://github.com/jarecsni/composaic-demo.git"
+        "url": "https://github.com/composaic/demo.git"
     },
     "scripts": {
         "api": "node ./server.js",
@@ -77,13 +77,13 @@
     },
     "dependencies": {
         "@babel/plugin-transform-react-jsx": "^7.25.2",
+        "@composaic/core": "^0.12.0",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
         "@module-federation/enhanced": "^0.6.10",
         "@module-federation/runtime": "^0.6.10",
         "@mui/icons-material": "^5.16.4",
         "@mui/material": "^5.16.4",
-        "composaic": "^0.11.0",
         "express": "^4.19.2",
         "mitt": "^3.0.1",
         "module-federation-import-remote": "^1.1.0",

@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleFederationPlugin = require('@module-federation/enhanced').ModuleFederationPlugin;
+const ModuleFederationPlugin =
+    require('@module-federation/enhanced').ModuleFederationPlugin;
 const deps = require('./package.json').dependencies;
 const SharedModuleCachePlugin = require('./SharedModuleCachePlugin');
 
@@ -49,9 +50,9 @@ module.exports = (env, { mode }) => {
                         requiredVersion: deps['react-dom'],
                         eager: true,
                     },
-                    composaic: {
+                    '@composaic/core': {
                         singleton: true,
-                        requiredVersion: deps['composaic'],
+                        requiredVersion: deps['@composaic/core'],
                         eager: true,
                     },
                 },

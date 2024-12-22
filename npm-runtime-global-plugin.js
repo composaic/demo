@@ -24,7 +24,7 @@
 
 import { registerGlobalPlugins } from '@module-federation/runtime';
 
-const useLocalShares = new Set(['composaic', 'react']);
+const useLocalShares = new Set(['@composaic/core', 'react']);
 
 //workaround for rspack who cannot process webpackIgnore comments yet
 
@@ -33,9 +33,9 @@ const getShareFromUnpkg = (packageName, version) => {
         const mod = new Function(
             'packageName',
             'version',
-            'return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`)',
+            'return import(/* webpackIgnore: true */ `https://esm.sh/${packageName}@${version}`)'
         )(packageName, version);
-        return mod.then(m => {
+        return mod.then((m) => {
             return () => m;
         });
     };
@@ -46,12 +46,12 @@ const store = {};
 const NpmRuntimeGlobalPlugin = () => {
     return {
         name: 'share-from-npm-plugin',
-        beforeInit: args => {
+        beforeInit: (args) => {
             store.name = args.options.name;
             return args;
         },
 
-        resolveShare: args => {
+        resolveShare: (args) => {
             const { shareScopeMap, scope, pkgName, version, resolver } = args;
             const currentPackageRef = shareScopeMap[scope][pkgName][version];
 
@@ -64,10 +64,10 @@ const NpmRuntimeGlobalPlugin = () => {
 
             return args;
         },
-        beforeLoadShare: async args => {
+        beforeLoadShare: async (args) => {
             // old workaround, may not be required anymore
             while (__FEDERATION__.__INSTANCES__.length <= 1) {
-                await new Promise(r => setTimeout(r, 50));
+                await new Promise((r) => setTimeout(r, 50));
             }
             return args;
         },

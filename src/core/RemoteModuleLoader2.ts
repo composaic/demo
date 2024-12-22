@@ -1,4 +1,4 @@
-import { RemoteModule } from 'composaic';
+import { RemoteModule } from '@composaic/core';
 import { loadRemote } from '@module-federation/runtime';
 
 /**
@@ -13,4 +13,3 @@ export const loadRemoteModule = async (
     // FIXME - adjust return type to match MF typing
     return loadRemote(`${name}/${moduleName}`) as Promise<object | undefined>;
 };
-

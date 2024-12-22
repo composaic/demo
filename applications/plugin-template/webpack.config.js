@@ -63,9 +63,9 @@ module.exports = (env, { mode }) => {
                         singleton: true, // only a single version of the shared module is allowed
                         eager: false,
                     },
-                    composaic: {
+                    '@composaic/core': {
                         singleton: true,
-                        requiredVersion: deps['composaic'],
+                        requiredVersion: deps['@composaic/core'],
                         eager: false,
                     },
                 },

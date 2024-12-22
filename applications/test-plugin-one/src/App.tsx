@@ -1,6 +1,6 @@
-import { DevContainer } from 'composaic';
+import { DevContainer } from '@composaic/core';
 import { config } from './config';
-import { PluginDescriptor } from 'composaic';
+import { PluginDescriptor } from '@composaic/core';
 
 const loadModule = async (pluginDescriptor: PluginDescriptor) => {
     const { package: pkg, module: moduleName } = pluginDescriptor;
@@ -9,7 +9,9 @@ const loadModule = async (pluginDescriptor: PluginDescriptor) => {
 };
 
 function App() {
-    return <DevContainer loadModuleFn={loadModule} config={config}></DevContainer>;
+    return (
+        <DevContainer loadModuleFn={loadModule} config={config}></DevContainer>
+    );
 }
 
 export default App;

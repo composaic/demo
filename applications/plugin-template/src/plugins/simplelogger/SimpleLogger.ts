@@ -3,7 +3,7 @@ import {
     LogMessage,
 } from 'composaic/lib/plugins/impl/logger';
 
-import { Plugin } from 'composaic';
+import { Plugin } from '@composaic/core';
 
 let idCounter = 0;
 

@@ -1,5 +1,5 @@
 import { importRemote } from 'module-federation-import-remote';
-import { RemoteModule } from 'composaic';
+import { RemoteModule } from '@composaic/core';
 
 // https://www.npmjs.com/package/module-federation-import-remote
 

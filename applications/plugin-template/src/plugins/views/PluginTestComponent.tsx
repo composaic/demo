@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import { LocalEventBus } from 'composaic';
-import { SignalService } from 'composaic';
+import { LocalEventBus } from '@composaic/core';
+import { SignalService } from '@composaic/core';
 
 import './PluginTestComponent.scss';
 

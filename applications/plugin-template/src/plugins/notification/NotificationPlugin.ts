@@ -1,4 +1,4 @@
-import { Plugin } from 'composaic';
+import { Plugin } from '@composaic/core';
 // @ts-expect-error this not working in VSC
 import { SignalsExtensionPoint } from 'composaic/lib/plugins/signals';
 

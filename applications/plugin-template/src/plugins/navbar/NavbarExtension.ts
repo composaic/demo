@@ -1,4 +1,4 @@
-import { Plugin } from 'composaic';
+import { Plugin } from '@composaic/core';
 export { RemoteExamplePage } from './RemoteExamplePage';
 
 export class NavbarExtensionPlugin extends Plugin {}
