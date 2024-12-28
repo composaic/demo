@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './SampleViewComponent.scss';
-import { LocalEventBus } from './LocalEventBus.js';
+import { LocalEventBus } from './LocalEventBus';
 
 interface Trade {
     id: number;

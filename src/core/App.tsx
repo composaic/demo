@@ -4,12 +4,14 @@ import { init, getRoutes, Navbar, PluginManager } from '@composaic/core';
 import { config } from '../config';
 import ErrorBoundary from './ErrorBoundary';
 import { loadRemoteModule } from './RemoteModuleLoader';
+import { getCorePluginDefinitions } from './plugin-utils';
 
 // Initalise Plugin Framework
 // we do not await the init since we have receive notification further plugins are added, we can start the app init straight away
 init({
+    getCorePluginDefinitions,
     config,
-    loadRemoteModuleFn: loadRemoteModule,
+    loadRemoteModule: loadRemoteModule,
 });
 
 export const App: React.FC = () => {

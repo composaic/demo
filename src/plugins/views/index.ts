@@ -1,6 +1,6 @@
-import { Plugin } from '../../types.js';
+import { Plugin } from '@composaic/core';
 
-export { SampleViewComponent } from './SampleViewComponent.js';
+export { SampleViewComponent } from './SampleViewComponent';
 
 export type PluginViewDefinition = {
     container: string;

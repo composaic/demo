@@ -1,5 +1,4 @@
-import { PluginManager } from '../../PluginManager.js';
-import { Plugin } from '../../types.js';
+import { PluginManager, Plugin } from '@composaic/core';
 
 export type LogLevel = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal';
 

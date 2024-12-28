@@ -1,4 +1,4 @@
-import { Plugin } from '../../types.js';
+import { Plugin } from '@composaic/core';
 
 export type SignalDefinition = {
     signal: string;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ViewsPlugin } from '../views';
-import { PluginManager } from '../../PluginManager.js';
-import { LocalEventBus } from '../views/LocalEventBus.js';
+import { Plugin, PluginManager } from '@composaic/core';
+import { LocalEventBus } from '../views/LocalEventBus';
 
 export const Example1Page: React.FC = () => {
     const [pluginComponents, setPluginComponents] = useState<
@@ -19,11 +19,13 @@ export const Example1Page: React.FC = () => {
             .getPlugin('@composaic/views')
             .then((viewsPlugin) => {
                 if (viewsPlugin) {
-                    const { components } = (
-                        viewsPlugin as ViewsPlugin
-                    ).getViewsByContainer('sample.container') || {
-                        components: [],
-                    };
+                    const { components } =
+                        // @ts-expect-error - we know this is a ViewsPlugin
+                        (viewsPlugin as ViewsPlugin).getViewsByContainer(
+                            'sample.container'
+                        ) || {
+                            components: [],
+                        };
                     const componentPromises = components.map(
                         ({ component, plugin }) => {
                             return PluginManager.getInstance()
