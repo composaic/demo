@@ -17,7 +17,7 @@
     "include": [
         "src",
         "SharedModuleCachePlugin.js"
-    ],
+, "../composaic/src/dev/plugin-utils.ts"    ],
     "exclude": [
         "node_modules",
         "tests"

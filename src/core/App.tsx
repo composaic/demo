@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Routes } from 'react-router-dom';
-import { init, getRoutes, Navbar, PluginManager } from '@composaic/core';
+import { init, PluginManager } from '@composaic/core';
+import { Navbar } from '../plugins/core/menu/Navbar';
 import { config } from '../config';
 import ErrorBoundary from './ErrorBoundary';
 import { loadRemoteModule } from './RemoteModuleLoader';
 import { getCorePluginDefinitions } from './plugin-utils';
+import { getRoutes } from '../plugins/core/menu/menu-utils';
 
 // Initalise Plugin Framework
 // we do not await the init since we have receive notification further plugins are added, we can start the app init straight away
