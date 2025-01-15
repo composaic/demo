@@ -7,6 +7,7 @@ import ErrorBoundary from './ErrorBoundary';
 import { loadRemoteModule } from './RemoteModuleLoader';
 import { getCorePluginDefinitions } from './plugin-utils';
 import { getRoutes } from '../plugins/core/menu/menu-utils';
+import { MyComponent } from '@composaic/web';
 
 // Initalise Plugin Framework
 // we do not await the init since we have receive notification further plugins are added, we can start the app init straight away
@@ -48,6 +49,7 @@ export const App: React.FC = () => {
             <ErrorBoundary fallback={<div>Something went wrong</div>}>
                 <Navbar />
                 <Routes>{routes}</Routes>
+                <MyComponent />
             </ErrorBoundary>
         </div>
     );
