@@ -55,6 +55,11 @@ module.exports = (env, { mode }) => {
                         requiredVersion: deps['@composaic/core'],
                         eager: true,
                     },
+                    '@composaic/web': {
+                        singleton: true,
+                        requiredVersion: deps['@composaic/web'],
+                        eager: true,
+                    },
                 },
             }),
         ],
