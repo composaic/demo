@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Routes } from 'react-router-dom';
 import { init, PluginManager } from '@composaic/core';
-import { Navbar } from '../plugins/core/menu/Navbar';
+import { Navbar, getRoutes } from '@composaic/web';
 import { config } from '../config';
 import ErrorBoundary from './ErrorBoundary';
 import { loadRemoteModule } from './RemoteModuleLoader';
-import { getCorePluginDefinitions } from './plugin-utils';
-import { getRoutes } from '../plugins/core/menu/menu-utils';
+import { getPluginModule as getWebPluginModule } from '@composaic/web';
 
 // Initalise Plugin Framework
 // we do not await the init since we have receive notification further plugins are added, we can start the app init straight away
 init({
-    getCorePluginDefinitions,
+    getPluginModules: () => [getWebPluginModule()],
     config,
     loadRemoteModule: loadRemoteModule,
 });
@@ -44,11 +43,9 @@ export const App: React.FC = () => {
         };
     }, []);
     return (
-        <div>
-            <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                <Navbar />
-                <Routes>{routes}</Routes>
-            </ErrorBoundary>
-        </div>
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+            <Navbar />
+            <Routes>{routes}</Routes>
+        </ErrorBoundary>
     );
 };

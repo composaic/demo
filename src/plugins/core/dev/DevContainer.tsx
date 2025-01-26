@@ -3,8 +3,8 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { Configuration, init, PluginDescriptor } from '@composaic/core';
 
-import { Navbar } from '../../core/menu/Navbar';
-import { getRoutes } from '../../core/menu/menu-utils';
+import { Navbar } from '../../../../../web/src/menu/Navbar';
+import { getRoutes } from '../../../../../web/src/menu/menu-utils';
 import ErrorBoundary from './ErrorBoundary';
 import { addLocalPlugins } from '@composaic/core';
 

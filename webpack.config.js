@@ -45,9 +45,9 @@ module.exports = (env, { mode }) => {
                         requiredVersion: deps.react,
                         eager: true,
                     },
-                    'react-dom': {
-                        singleton: true, // only a single version of the shared module is allowed
-                        requiredVersion: deps['react-dom'],
+                    'react-router-dom': {
+                        singleton: true,
+                        requiredVersion: deps['react-router-dom'],
                         eager: true,
                     },
                     '@composaic/core': {
