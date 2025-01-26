@@ -16,7 +16,6 @@
     },
     "include": [
         "src",
-        "SharedModuleCachePlugin.js"
     ],
     "exclude": [
         "node_modules",
