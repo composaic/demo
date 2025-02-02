@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "scripts": {
         "start": "webpack serve --progress --mode development",
-        "serve:plugin": "http-server dist -p 4001 --cors -c-1",
+        "serve": "http-server dist -p 4001 --cors -c-1",
         "clean": "rm -rf ./dist",
         "build": "webpack --progress --mode production",
         "lint": "eslint src --ext .js,.ts,.tsx --ignore-pattern '!.*.js' --no-error-on-unmatched-pattern",
