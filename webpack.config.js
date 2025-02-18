@@ -71,7 +71,17 @@ module.exports = (env, { mode }) => {
                     loader: 'esbuild-loader',
                     options: {
                         loader: 'tsx',
-                        target: 'esnext',
+                        target: 'es2020',
+                        sourcemap: !isProduction,
+                        minify: isProduction,
+                        jsx: 'automatic',
+                        tsconfigRaw: {
+                            compilerOptions: {
+                                sourceMap: !isProduction,
+                                jsx: 'react-jsx',
+                                target: 'es2020',
+                            },
+                        },
                     },
                     exclude: /node_modules/,
                 },
@@ -147,10 +157,10 @@ module.exports = (env, { mode }) => {
 
         performance: {
             maxEntrypointSize: Infinity,
-            maxAssetSize: 1024 ** 2,
+            maxAssetSize: isProduction ? 1024 ** 2 : Infinity,
         },
 
-        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
 
         devServer: {
             host: '0.0.0.0',

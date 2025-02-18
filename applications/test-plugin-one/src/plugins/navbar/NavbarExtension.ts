@@ -1,6 +1,13 @@
-import { Plugin } from '@composaic/core';
+import { Plugin, PluginMetadata } from '@composaic/core';
 export { RemoteExamplePage } from './RemoteExamplePage';
 
+@PluginMetadata({
+    plugin: '@composaic/demo-navbar',
+    version: '0.1.0',
+    description: 'Demo Navbar Plugin',
+    module: 'NavbarExtension',
+    package: '@composaic/demo-plugins',
+})
 export class NavbarExtensionPlugin extends Plugin {}
 
 export class NavbarItemExtension {
