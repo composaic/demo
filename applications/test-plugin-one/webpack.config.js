@@ -62,7 +62,7 @@ module.exports = (env, { mode }) => {
                     },
                     '@composaic/core': {
                         singleton: true,
-                        requiredVersion: deps['@composaic/core'],
+                        requiredVersion: '0.13.4',
                         eager: true,
                     },
                     '@composaic/web': {
@@ -87,12 +87,7 @@ module.exports = (env, { mode }) => {
             rules: [
                 {
                     test: /\.(js|jsx|ts|tsx)?$/,
-                    loader: 'esbuild-loader',
-                    options: {
-                        loader: 'tsx',
-                        target: 'esnext',
-                        sourcemap: true,
-                    },
+                    loader: 'babel-loader',
                     exclude: /node_modules/,
                 },
                 {

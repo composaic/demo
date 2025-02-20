@@ -90,6 +90,12 @@ module.exports = (env, { mode }) => {
                         loader: 'tsx',
                         target: 'esnext',
                         sourcemap: true,
+                        tsconfigRaw: {
+                            compilerOptions: {
+                                experimentalDecorators: true,
+                                emitDecoratorMetadata: true,
+                            },
+                        },
                     },
                     exclude: /node_modules/,
                 },
