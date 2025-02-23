@@ -83,7 +83,18 @@ module.exports = (env, { mode }) => {
             rules: [
                 {
                     test: /\.(js|jsx|ts|tsx)?$/,
-                    loader: 'babel-loader',
+                    loader: 'esbuild-loader',
+                    options: {
+                        loader: 'tsx',
+                        target: 'esnext',
+                        sourcemap: !isProduction,
+                        tsconfigRaw: {
+                            compilerOptions: {
+                                experimentalDecorators: true,
+                                emitDecoratorMetadata: true,
+                            },
+                        },
+                    },
                     exclude: /node_modules/,
                 },
                 {
@@ -161,7 +172,7 @@ module.exports = (env, { mode }) => {
             maxAssetSize: 1024 ** 2,
         },
 
-        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devtool: isProduction ? false : 'inline-source-map',
 
         devServer: {
             host: '0.0.0.0',

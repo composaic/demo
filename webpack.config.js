@@ -160,7 +160,7 @@ module.exports = (env, { mode }) => {
             maxAssetSize: isProduction ? 1024 ** 2 : Infinity,
         },
 
-        devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
+        devtool: isProduction ? false : 'eval-cheap-module-source-map',
 
         devServer: {
             host: '0.0.0.0',

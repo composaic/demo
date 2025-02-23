@@ -81,8 +81,8 @@
     },
     "dependencies": {
         "@babel/plugin-transform-react-jsx": "^7.25.2",
-        "@composaic/core": "^0.13.2",
-        "@composaic/web": "^0.1.4",
+        "@composaic/core": "^0.13.5",
+        "@composaic/web": "^0.1.5",
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
         "@module-federation/enhanced": "^0.6.10",

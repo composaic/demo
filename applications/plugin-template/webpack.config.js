@@ -87,7 +87,7 @@ module.exports = (env, { mode }) => {
                     options: {
                         loader: 'tsx',
                         target: 'esnext',
-                        sourcemap: true,
+                        sourcemap: !isProduction,
                         tsconfigRaw: {
                             compilerOptions: {
                                 experimentalDecorators: true,
@@ -172,7 +172,7 @@ module.exports = (env, { mode }) => {
             maxAssetSize: 1024 ** 2,
         },
 
-        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devtool: isProduction ? false : 'eval-cheap-module-source-map',
 
         devServer: {
             host: '0.0.0.0',
