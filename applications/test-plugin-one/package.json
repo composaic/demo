@@ -18,19 +18,19 @@
         "husky-install": "husky install"
     },
     "dependencies": {
-        "@composaic/core": "^0.13.5",
+        "@composaic/core": "^0.13.7",
         "@composaic/web": "^0.1.5",
         "@module-federation/enhanced": "^0.6.10",
         "react": "^18.3.1",
         "react-dom": "^18.3.1"
     },
     "devDependencies": {
-        "concurrently": "^8.2.2",
         "@types/jest": "^29.5.12",
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",
         "@typescript-eslint/eslint-plugin": "^8.5.0",
         "@typescript-eslint/parser": "^8.5.0",
+        "concurrently": "^8.2.2",
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^7.1.2",
         "esbuild-loader": "^4.2.2",
