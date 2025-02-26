@@ -4,18 +4,17 @@
     "version": "0.0.0",
     "scripts": {
         "start": "concurrently \"npm run dev:manifests\" \"webpack serve --progress --mode development\"",
+        "start:standalone": "STANDALONE=true concurrently \"npm run dev:manifests\" \"webpack serve --progress --mode development\"",
         "serve": "http-server dist -p 4001 --cors -c-1",
         "clean": "rm -rf ./dist .manifest-cache",
         "build:manifests": "node ./node_modules/@composaic/core/dist/cjs/plugin-system/cli.js generate -c plugin-manifest.config.js",
         "dev:manifests": "node ./node_modules/@composaic/core/dist/cjs/plugin-system/cli.js watch -c plugin-manifest.config.js",
         "build": "npm run clean && npm run build:manifests && webpack --progress --mode production",
         "lint": "eslint src --ext .js,.ts,.tsx --ignore-pattern '!.*.js' --no-error-on-unmatched-pattern",
-        "lint:fix": "npm lint --fix",
+        "lint:fix": "npm run lint -- --fix",
         "format": "prettier --config .prettierrc.js --check src/**/*.{js,jsx,ts,tsx}",
         "format:fix": "prettier --config .prettierrc.js --write src/**/*.{js,jsx,ts,tsx}",
-        "type": "./node_modules/.bin/tsc --project tsconfig.json --noEmit",
-        "lint-staged": "lint-staged",
-        "husky-install": "husky install"
+        "type": "./node_modules/.bin/tsc --project tsconfig.json --noEmit"
     },
     "dependencies": {
         "@composaic/core": "^0.13.7",
@@ -25,12 +24,12 @@
         "react-dom": "^18.3.1"
     },
     "devDependencies": {
+        "@babel/plugin-syntax-import-attributes": "^7.24.7",
         "@types/jest": "^29.5.12",
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",
         "@typescript-eslint/eslint-plugin": "^8.5.0",
         "@typescript-eslint/parser": "^8.5.0",
-        "concurrently": "^8.2.2",
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^7.1.2",
         "esbuild-loader": "^4.2.2",

@@ -1,3 +1,4 @@
+import React from 'react';
 import { DevContainer } from '@composaic/web';
 import { config } from './config';
 import { PluginDescriptor } from '@composaic/core';
