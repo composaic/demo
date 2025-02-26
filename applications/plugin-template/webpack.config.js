@@ -80,7 +80,7 @@ module.exports = (env, { mode }) => {
                 patterns: [
                     {
                         from: './public/manifest.json',
-                        to: '../testplugin-one/manifest.json',
+                        to: '../testplugins/manifest.json',
                     },
                 ],
             }),
