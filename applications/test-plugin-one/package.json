@@ -17,8 +17,8 @@
         "type": "./node_modules/.bin/tsc --project tsconfig.json --noEmit"
     },
     "dependencies": {
-        "@composaic/core": "^0.13.7",
-        "@composaic/web": "^0.1.5",
+        "@composaic/core": "^0.14.0",
+        "@composaic/web": "^0.2.0",
         "@module-federation/enhanced": "^0.6.10",
         "react": "^18.3.1",
         "react-dom": "^18.3.1"
