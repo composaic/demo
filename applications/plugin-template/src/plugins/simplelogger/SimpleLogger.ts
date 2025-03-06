@@ -1,12 +1,26 @@
-import {
-    LoggerExtensionPoint,
-    LogMessage,
-} from 'composaic/lib/plugins/impl/logger';
-
 import { Plugin } from '@composaic/core';
+import { PluginMetadata, ExtensionMetadata } from '@composaic/core';
+
+// TODO: Replace with proper import once logger types are exported properly
+interface LogMessage {
+    level: string;
+    message: string;
+    timestamp: Date;
+    subSystemName: string;
+}
+
+interface LoggerExtensionPoint {
+    getSubSystemName(): string;
+    setLogCallback(log: (message: LogMessage) => void): void;
+}
 
 let idCounter = 0;
 
+@ExtensionMetadata({
+    plugin: '@composaic/logger',
+    id: 'logger',
+    className: 'SimpleLoggerExtension',
+})
 export class SimpleLoggerExtension implements LoggerExtensionPoint {
     objId = 0;
     constructor() {
@@ -31,6 +45,13 @@ export class SimpleLoggerExtension implements LoggerExtensionPoint {
     }
 }
 
+@PluginMetadata({
+    plugin: '@composaic-tests/simple-logger',
+    version: '1.0',
+    description: 'Simple extension for the Composaic Logger Plugin',
+    package: 'simplelogger',
+    module: 'SimpleLogger',
+})
 export class SimpleLoggerPlugin extends Plugin {
     extension?: SimpleLoggerExtension;
     async start() {

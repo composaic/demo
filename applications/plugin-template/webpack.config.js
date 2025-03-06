@@ -14,6 +14,14 @@ const Modes = {
 
 module.exports = (env, { mode }) => {
     const isProduction = mode === Modes.PRODUCTION;
+    const isStandalone = process.env.STANDALONE === 'true';
+
+    // Configure shared dependencies with eager loading in standalone mode
+    const getSharedConfig = (pkg, config) => ({
+        ...config,
+        eager: isStandalone || config.eager || false,
+    });
+
     return {
         mode,
         entry: path.join(__dirname, 'src', 'main.tsx'),
@@ -50,24 +58,21 @@ module.exports = (env, { mode }) => {
                         './src/plugins/notification/NotificationPlugin',
                 },
                 shared: {
-                    react: {
+                    react: getSharedConfig('react', {
                         requiredVersion: deps.react,
-                        import: 'react', // the "react" package will be used a provided and fallback module
-                        shareKey: 'react', // under this name the shared module will be placed in the share scope
-                        shareScope: 'default', // share scope with this name will be used
-                        singleton: true, // only a single version of the shared module is allowed
-                        eager: true,
-                    },
-                    'react-dom': {
+                        import: 'react',
+                        shareKey: 'react',
+                        shareScope: 'default',
+                        singleton: true,
+                    }),
+                    'react-dom': getSharedConfig('react-dom', {
                         requiredVersion: deps['react-dom'],
-                        singleton: true, // only a single version of the shared module is allowed
-                        eager: true,
-                    },
-                    '@composaic/core': {
+                        singleton: true,
+                    }),
+                    '@composaic/core': getSharedConfig('@composaic/core', {
                         singleton: true,
                         requiredVersion: deps['@composaic/core'],
-                        eager: true,
-                    },
+                    }),
                 },
                 dts: false,
             }),
@@ -75,7 +80,7 @@ module.exports = (env, { mode }) => {
                 patterns: [
                     {
                         from: './public/manifest.json',
-                        to: '../testplugin-one/manifest.json',
+                        to: '../testplugins/manifest.json',
                     },
                 ],
             }),
@@ -89,7 +94,13 @@ module.exports = (env, { mode }) => {
                     options: {
                         loader: 'tsx',
                         target: 'esnext',
-                        sourcemap: true,
+                        sourcemap: !isProduction,
+                        tsconfigRaw: {
+                            compilerOptions: {
+                                experimentalDecorators: true,
+                                emitDecoratorMetadata: true,
+                            },
+                        },
                     },
                     exclude: /node_modules/,
                 },
@@ -168,14 +179,14 @@ module.exports = (env, { mode }) => {
             maxAssetSize: 1024 ** 2,
         },
 
-        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devtool: isProduction ? false : 'eval-cheap-module-source-map',
 
         devServer: {
             host: '0.0.0.0',
             port: 9000,
             historyApiFallback: true,
             headers: {
-                'Access-Control-Allow-Origin': '*', // Allows access from any origin
+                'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods':
                     'GET, POST, PUT, DELETE, PATCH, OPTIONS',
                 'Access-Control-Allow-Headers':
