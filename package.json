@@ -88,7 +88,7 @@
         "@module-federation/enhanced": "^0.6.10",
         "@module-federation/runtime": "^0.6.10",
         "@mui/icons-material": "^5.16.4",
-        "@mui/material": "^5.16.4",
+        "@mui/material": "^6.4.8",
         "express": "^4.19.2",
         "mitt": "^3.0.1",
         "module-federation-import-remote": "^1.1.0",
