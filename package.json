@@ -89,7 +89,7 @@
         "@module-federation/runtime": "^0.11.3",
         "@mui/icons-material": "^7.0.1",
         "@mui/material": "^7.0.1",
-        "express": "^4.21.2",
+        "express": "^5.1.0",
         "mitt": "^3.0.1",
         "module-federation-import-remote": "^1.1.0",
         "react": "^18.3.1",
