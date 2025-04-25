@@ -82,7 +82,7 @@
     "dependencies": {
         "@babel/plugin-transform-react-jsx": "^7.25.9",
         "@composaic/core": "^0.14.0",
-        "@composaic/web": "^0.2.0",
+        "@composaic/web": "^0.2.1",
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
         "@module-federation/enhanced": "^0.12.0",
