@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@composaic/core": "^0.14.0",
-        "@composaic/web": "^0.2.0",
+        "@composaic/web": "^0.2.1",
         "@module-federation/enhanced": "^0.11.2",
         "react": "^18.3.1",
         "react-dom": "^18.3.1"
