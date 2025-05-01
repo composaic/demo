@@ -1,21 +1,13 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-
-import { LocalEventBus } from '@composaic/web';
+import { useViewContext, ViewMessage } from '@composaic/web';
 import { SignalService } from '@composaic/core';
 
 import './PluginTestComponent.scss';
-
-// Assuming the Trade type is defined elsewhere, import it
-// import { Trade } from './path-to-trade-type-definition';
 
 type Trade = {
     currencyPair: string;
     tradeDate: string;
 };
-interface TradeDetailViewProps {
-    trade: Trade;
-    events: LocalEventBus; // Event handler for when "Use trade" is clicked
-}
 
 const referenceNumberMap: { [key: string]: string } = {
     'EUR/USD': '12345',
@@ -23,19 +15,13 @@ const referenceNumberMap: { [key: string]: string } = {
     'USD/JPY': '54321',
 };
 
-export const PluginTestComponent: React.FC<TradeDetailViewProps> = ({
-    events,
-}): ReactNode => {
+export const PluginTestComponent: React.FC = (): ReactNode => {
+    const { emit, on } = useViewContext();
     const [selectedTrade, setSelectedTrade] = useState<Trade | null>(null);
     const [referenceNumber, setReferenceNumber] = useState<string>('');
 
-    const tradeChangeHandler = (trade: Trade) => {
-        console.log('Selected trade changed:', trade);
-        setSelectedTrade(trade);
-        setReferenceNumber(referenceNumberMap[trade.currencyPair]);
-    };
-
     useEffect(() => {
+        // Signal service setup
         (async () => {
             const signalService = await SignalService.getInstance();
             await signalService.send({
@@ -44,15 +30,23 @@ export const PluginTestComponent: React.FC<TradeDetailViewProps> = ({
             });
         })();
 
-        events.on('selectedTradeChanged', tradeChangeHandler);
+        // Listen for trade selection changes
+        const unsubscribe = on((msg: ViewMessage) => {
+            if (msg.type === 'selectedTradeChanged') {
+                const trade = msg.payload as Trade;
+                console.log('Selected trade changed:', trade);
+                setSelectedTrade(trade);
+                setReferenceNumber(referenceNumberMap[trade.currencyPair]);
+            }
+        });
 
         return () => {
-            events.off('selectedTradeChanged', tradeChangeHandler);
+            unsubscribe();
         };
-    }, [events]);
+    }, [on]);
 
     const onUseTrade = () => {
-        events.emit('useReference', referenceNumber);
+        emit({ type: 'useReference', payload: referenceNumber });
     };
 
     return (

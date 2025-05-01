@@ -73,6 +73,10 @@ module.exports = (env, { mode }) => {
                         singleton: true,
                         requiredVersion: deps['@composaic/core'],
                     }),
+                    '@composaic/web': getSharedConfig('@composaic/web', {
+                        singleton: true,
+                        requiredVersion: deps['@composaic/web'],
+                    }),
                 },
                 dts: false,
             }),
