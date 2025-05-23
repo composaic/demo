@@ -18,10 +18,48 @@ module.exports = (env, { mode }) => {
         mode,
         entry: path.join(__dirname, 'src', 'main.tsx'),
         output: {
-            filename: 'bundle.js',
+            filename: isProduction ? '[name].[contenthash].js' : '[name].js',
+            chunkFilename: isProduction
+                ? '[name].[contenthash].js'
+                : '[name].js',
             path: path.resolve(__dirname, 'dist'),
             publicPath: '/',
         },
+        optimization: isProduction
+            ? {
+                  splitChunks: {
+                      chunks: 'all',
+                      maxInitialRequests: 25,
+                      minSize: 20000,
+                      cacheGroups: {
+                          mui: {
+                              test: /[\\/]node_modules[\\/]@mui/,
+                              name: 'mui',
+                              priority: 30,
+                              reuseExistingChunk: true,
+                          },
+                          react: {
+                              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                              name: 'react-core',
+                              priority: 20,
+                              reuseExistingChunk: true,
+                          },
+                          router: {
+                              test: /[\\/]node_modules[\\/]react-router(-dom)?[\\/]/,
+                              name: 'router',
+                              priority: 10,
+                              reuseExistingChunk: true,
+                          },
+                          vendors: {
+                              test: /[\\/]node_modules[\\/]/,
+                              name: 'vendors',
+                              priority: -10,
+                              reuseExistingChunk: true,
+                          },
+                      },
+                  },
+              }
+            : undefined,
         //stats: 'verbose',
         plugins: [
             new SharedModuleCachePlugin(),
