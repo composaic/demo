@@ -1,5 +1,9 @@
 {
     "name": "@composaic/demo",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
     "version": "0.3.0",
     "description": "Example projects for Composaic",
     "repository": {
