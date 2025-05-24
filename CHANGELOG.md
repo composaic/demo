@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0 (24 May 2025)
+
+o Dependency upgrades
+o ViewComposite (web project) related changes
+
 ## 0.1.4 (28 May 2024) - Tag test 3
 
 Uhm ... the version in package.json is not automatically bumped :D
