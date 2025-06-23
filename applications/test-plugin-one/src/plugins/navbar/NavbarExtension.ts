@@ -1,5 +1,6 @@
 import { Plugin, PluginMetadata, ExtensionMetadata } from '@composaic/core';
 export { RemoteExamplePage } from './RemoteExamplePage';
+export { UserCardComponent } from '../components/UserCardComponent';
 
 @PluginMetadata({
     plugin: '@composaic-tests-one/navbar',
@@ -31,3 +32,23 @@ export class NavbarExtensionPlugin extends Plugin {}
     ],
 })
 export class NavbarItemExtension {}
+
+@ExtensionMetadata({
+    plugin: '@composaic/views',
+    id: 'components',
+    className: 'TestPluginComponentExtension',
+    meta: [
+        {
+            componentId: '@demo/user-card',
+            componentClass: 'UserCardComponent',
+            properties: {
+                name: 'string',
+                age: '?number',
+                role: 'admin|user|guest',
+                tags: 'string[]',
+                isActive: 'boolean',
+            },
+        },
+    ],
+})
+export class TestPluginComponentExtension {}

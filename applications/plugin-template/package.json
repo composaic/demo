@@ -3,6 +3,7 @@
     "private": "true",
     "version": "0.0.0",
     "scripts": {
+        "wpack": "webpack serve --progress --mode development",
         "start": "concurrently \"npm run dev:manifests\" \"webpack serve --progress --mode development\"",
         "start:standalone": "STANDALONE=true concurrently \"npm run dev:manifests\" \"webpack serve --progress --mode development\"",
         "serve": "http-server dist -p 4000 --cors -c-1",

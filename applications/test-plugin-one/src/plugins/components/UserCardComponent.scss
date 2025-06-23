@@ -1,0 +1,238 @@
+.user-card-alt {
+  background: #ffffff;
+  border: 2px solid #e1e8ed;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  max-width: 450px;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: #1da1f2;
+  }
+
+  &.inactive {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    opacity: 0.7;
+  }
+
+  &.admin {
+    border-color: #dc3545;
+    background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+  }
+
+  &.user {
+    border-color: #28a745;
+    background: linear-gradient(135deg, #fff 0%, #f8fff9 100%);
+  }
+
+  &.guest {
+    border-color: #6c757d;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  }
+
+  &__avatar {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__avatar-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid white;
+    
+    &.online {
+      background: #28a745;
+    }
+    
+    &.offline {
+      background: #6c757d;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  &__role {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+
+    &.role-admin {
+      background: #dc3545;
+      color: white;
+    }
+
+    &.role-user {
+      background: #28a745;
+      color: white;
+    }
+
+    &.role-guest {
+      background: #6c757d;
+      color: white;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.9em;
+    color: #6c757d;
+  }
+
+  &__age {
+    font-weight: 500;
+  }
+
+  &__status {
+    font-weight: 600;
+    
+    &.online {
+      color: #28a745;
+    }
+    
+    &.offline {
+      color: #6c757d;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  &__tag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #dee2e6;
+      transform: scale(1.05);
+    }
+  }
+
+  &__children {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e9ecef;
+    
+    p {
+      margin: 0;
+      line-height: 1.5;
+      color: #495057;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .user-card-alt {
+    background: #2c3e50;
+    border-color: #34495e;
+    color: #ecf0f1;
+    
+    &__name {
+      color: #ecf0f1;
+    }
+    
+    &__meta {
+      color: #bdc3c7;
+    }
+    
+    &__tag {
+      background: #34495e;
+      color: #bdc3c7;
+      
+      &:hover {
+        background: #3c5a78;
+      }
+    }
+    
+    &__children {
+      border-color: #34495e;
+      
+      p {
+        color: #bdc3c7;
+      }
+    }
+    
+    &.inactive {
+      background: #1a252f;
+      border-color: #2c3e50;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .user-card-alt {
+    flex-direction: column;
+    text-align: center;
+    
+    &__header {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    &__meta {
+      justify-content: center;
+    }
+  }
+}

@@ -42,7 +42,8 @@ module.exports = {
     optimization: {
         cacheDir: '.manifest-cache',
         watchMode: {
-            patterns: ['src/plugins/**/*.ts'],
+            directory: 'dist/testplugins/',
+            patterns: ['src_plugins_*.js', 'src_plugins_*.hot-update.js'],
             debounceMs: 100,
         },
     },

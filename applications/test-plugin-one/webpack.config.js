@@ -29,10 +29,7 @@ module.exports = (env, { mode }) => {
         output: {
             filename: 'bundle.js',
             chunkFilename: '[name]-[contenthash].js',
-            path: path.resolve(
-                __dirname,
-                isProduction ? 'dist/testplugin-one' : 'dist'
-            ),
+            path: path.resolve(__dirname, 'dist/testplugin-one'),
             publicPath: 'auto',
         },
         externals: {
@@ -81,7 +78,7 @@ module.exports = (env, { mode }) => {
                 patterns: [
                     {
                         from: './public/manifest.json',
-                        to: '../testplugin-one/manifest.json',
+                        to: './manifest.json',
                     },
                 ],
             }),
