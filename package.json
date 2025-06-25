@@ -15,7 +15,7 @@
         "serve": "http-server dist -p 3000 --cors -c-1",
         "dev:all": "concurrently \"npm run dev\" \"npm run api\"",
         "webpack-help": "webpack --help",
-        "start": "concurrently \"npm run dev:manifests\" \"webpack serve --progress --mode development\"",
+        "start": "webpack serve --progress --mode development",
         "clean": "rm -rf ./build .manifest-cache",
         "build:manifests": "node ./node_modules/@composaic/core/dist/cjs/plugin-system/cli.js generate -c plugin-manifest.config.js",
         "dev:manifests": "node ./node_modules/@composaic/core/dist/cjs/plugin-system/cli.js watch -c plugin-manifest.config.js",

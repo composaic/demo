@@ -1,0 +1,148 @@
+.user-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  max-width: 400px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  &.inactive {
+    background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+    opacity: 0.8;
+  }
+
+  &.admin {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  }
+
+  &.guest {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__status {
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__age {
+    margin: 0;
+    font-size: 0.95em;
+    opacity: 0.9;
+  }
+
+  &__role {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+
+    &.role-admin {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    &.role-user {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    &.role-guest {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  &__tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 0.8em;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__content {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    
+    p {
+      margin: 0;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .user-card {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .user-card {
+    margin: 12px 0;
+    padding: 16px;
+    
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    &__info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+}

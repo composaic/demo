@@ -28,10 +28,7 @@ module.exports = (env, { mode }) => {
         output: {
             filename: 'bundle.js',
             chunkFilename: '[name]-[contenthash].js',
-            path: path.resolve(
-                __dirname,
-                isProduction ? 'dist/testplugins' : 'dist'
-            ),
+            path: path.resolve(__dirname, 'dist/testplugins'),
             publicPath: 'auto',
         },
         externals: {
@@ -189,6 +186,9 @@ module.exports = (env, { mode }) => {
             host: '0.0.0.0',
             port: 9000,
             historyApiFallback: true,
+            devMiddleware: {
+                writeToDisk: true, // Force webpack-dev-server to write files to disk
+            },
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods':
