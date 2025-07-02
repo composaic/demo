@@ -2,7 +2,7 @@
 module.exports = {
     plugins: [
         {
-            type: 'application',
+            type: 'remote',
             collective: {
                 name: '@composaic/plugin-test',
                 output: 'public/manifest.json',
